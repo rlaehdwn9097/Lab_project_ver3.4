@@ -168,13 +168,8 @@ class DQNagent():
     def reset(self):
         self.network = nt.Network()
 
-        # state 함수 안에 round_day를 가져오는 
-        self.round_nb = 0
+        # state 함수 안에 round_day를 가져오는
         self.state = self.set_state()
-        self.cache_hit_cnt = 0
-        self.action_cnt = 0
-        self.step_cnt = 0
-        self.hop_cnt = 0
         self.requestDictionary = self.set_requestDictionary()
 
         return self.state
@@ -262,38 +257,16 @@ class DQNagent():
     def load_weights(self, path):
         self.dqn.load_weights(path + 'networkSIM_dqn.h5')
 
-    def step(self, action):
+    def step(self, action, path, requested_content):
         #print("step function 안에 들어옴")
         self.step_cnt = self.step_cnt + 1
         # 이제 여기서 요청 시작 {노드, 요청한 컨텐츠}
-        # @ round_day 를 state 로 빼야함 
-        # @ reset 할 때 고려
-        round_day =  self.network.days[self.round_nb] % 7
-        requested_content, path = self.network.request_and_get_path(round_day)
-
-        #
-        title = requested_content.get_title()
-        self.requestDictionary[title] += 1
-
-        # 홉수 
-        self.hop_cnt += len(path) - 1
-
-        if len(path) == 5:
-            self.action_cnt = self.action_cnt + 1
-            self.stop = self.stop - 1
-            self.act(path, requested_content, action)
+        self.action_cnt = self.action_cnt + 1
+        self.stop = self.stop - 1
+        self.act(path, requested_content, action)
             
         # ! act paratmeter : nodeID, requested_content, action
         #print("act 실행")
-
-        elif len(path) < 5:
-            # ! 테스트 용
-            self.action = 3
-            self.stored_type = 3
-            self.cache_hit_cnt += 1
-            # 요청들어온 컨테츠가 이미 storage에 있을 때 뒤로 빼줌.
-            ct.updatequeue(path,requested_content,self.network.microBSList,self.network.BSList,self.network.dataCenter)
-            
 
         #! 종료 시점 언제 알려줄지도 수정
         # @ round_day 가 state에 포함되기 때문에 
@@ -328,45 +301,61 @@ class DQNagent():
 
             # reset episode
             time, episode_reward, done = 0, 0, False
+            self.round_nb, self.cache_hit_cnt, self.action_cnt, self.step_cnt, self.hop_cnt = 0,0,0,0,0
             # reset the environment and observe the first state
             #print("reset?")
             state = self.reset()
 
             #print("reset 직후 state : {}".format(state))
             while not done:
-                # visualize the environment
-                #self.env.render()
-                # pick an action
-                action = self.choose_action(state)
-                #print("choose_action 끝")
-                # observe reward, new_state
-                #print("state : {}".format(state))
-                next_state, reward, done = self.step(action)
-                #print("next_state : {}".format(next_state))
-                train_reward = reward
+                # @ round_day 를 state 로 빼야함 
+                # @ reset 할 때 고려
+                round_day =  self.network.days[self.round_nb] % 7
+                requested_content, path = self.network.request_and_get_path(round_day)
+                title = requested_content.get_title()
+                self.requestDictionary[title] += 1
+                # 홉수 
+                self.hop_cnt += len(path) - 1
 
-                # add transition to replay buffer
-                self.buffer.add_buffer(state, action, train_reward, next_state, done)
+                # 데이터 센터 && 코어 네트워크에서 cache hit 이 일어났을때
+                if len(path) >= 4:
+                    # pick an action
+                    action = self.choose_action(state)
+                    #print("choose_action 끝")
+                    # observe reward, new_state
+                    #print("state : {}".format(state))
+                    next_state, reward, done = self.step(action, path, requested_content)
+                    #print("next_state : {}".format(next_state))
+                    train_reward = reward
 
-                if self.buffer.buffer_count() > cf.MAX_ROUNDS * 0.2:  # start train after buffer has some amounts
+                    # add transition to replay buffer
+                    self.buffer.add_buffer(state, action, train_reward, next_state, done)
 
-                    # decaying EPSILON
-                    if self.EPSILON > self.EPSILON_MIN:
-                        self.EPSILON *= self.EPSILON_DECAY
+                    if self.buffer.buffer_count() > cf.MAX_ROUNDS * 0.2:  # start train after buffer has some amounts
+
+                        # decaying EPSILON
+                        if self.EPSILON > self.EPSILON_MIN:
+                            self.EPSILON *= self.EPSILON_DECAY
+                        
+                        # sample transitions from replay buffer
+                        states, actions, rewards, next_states, dones = self.buffer.sample_batch(self.BATCH_SIZE)
+                        
+                        # predict target Q-values
+                        target_qs = self.target_dqn(tf.convert_to_tensor(next_states, dtype=tf.float32))
+
+                        # compute TD targets
+                        y_i = self.td_target(rewards, target_qs.numpy(), dones)
+
+                        self.dqn_learn(tf.convert_to_tensor(states, dtype=tf.float32), actions, tf.convert_to_tensor(y_i, dtype=tf.float32))
+                        
+                        # update target network
+                        self.update_target_network(self.TAU)
                     
-                    # sample transitions from replay buffer
-                    states, actions, rewards, next_states, dones = self.buffer.sample_batch(self.BATCH_SIZE)
-                    
-                    # predict target Q-values
-                    target_qs = self.target_dqn(tf.convert_to_tensor(next_states, dtype=tf.float32))
 
-                    # compute TD targets
-                    y_i = self.td_target(rewards, target_qs.numpy(), dones)
-
-                    self.dqn_learn(tf.convert_to_tensor(states, dtype=tf.float32), actions, tf.convert_to_tensor(y_i, dtype=tf.float32))
-                    
-                    # update target network
-                    self.update_target_network(self.TAU)
+                # MicroBS, BS 에서 cache hit 이 일어났을 때
+                else:
+                    self.cache_hit_cnt += 1
+                    ct.updatequeue(path,requested_content,self.network.microBSList,self.network.BSList,self.network.dataCenter)
 
 
                 # update current state
