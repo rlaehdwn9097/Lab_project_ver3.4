@@ -1,0 +1,10 @@
+Episode: 1	Time: 16869	NB_Round: 16869	step_cnt: 16869	action_cnt: 7000	cache_hit: 9869	cache_hit_rate : 0.5850376430138123	Reward: 1233273.061537387	redundancy : 0.6064516129032258	avg_hop : 2.921275712846049
+Episode: 2	Time: 13854	NB_Round: 13854	step_cnt: 13854	action_cnt: 7000	cache_hit: 6854	cache_hit_rate : 0.49473076367836005	Reward: 2327477.249869219	redundancy : 0.38461538461538464	avg_hop : 3.396131081276166
+Episode: 3	Time: 15219	NB_Round: 15219	step_cnt: 15219	action_cnt: 7000	cache_hit: 8219	cache_hit_rate : 0.5400486234312373	Reward: 2459457.654516242	redundancy : 0.5342465753424658	avg_hop : 3.1582232735396545
+Episode: 4	Time: 13698	NB_Round: 13698	step_cnt: 13698	action_cnt: 7000	cache_hit: 6698	cache_hit_rate : 0.48897649291867423	Reward: 2287935.181206487	redundancy : 0.4880952380952381	avg_hop : 3.401664476565922
+Episode: 5	Time: 15649	NB_Round: 15649	step_cnt: 15649	action_cnt: 7000	cache_hit: 8649	cache_hit_rate : 0.5526870726563998	Reward: 2584918.0429183273	redundancy : 0.504950495049505	avg_hop : 3.250111828231836
+Episode: 6	Time: 13255	NB_Round: 13255	step_cnt: 13255	action_cnt: 7000	cache_hit: 6255	cache_hit_rate : 0.4718973972086005	Reward: 2228941.5332121165	redundancy : 0.3076923076923077	avg_hop : 3.4745379102225575
+Episode: 7	Time: 14186	NB_Round: 14186	step_cnt: 14186	action_cnt: 7000	cache_hit: 7186	cache_hit_rate : 0.5065557591992105	Reward: 2366719.387337927	redundancy : 0.4111111111111111	avg_hop : 3.3477372056957564
+Episode: 8	Time: 14932	NB_Round: 14932	step_cnt: 14932	action_cnt: 7000	cache_hit: 7932	cache_hit_rate : 0.5312081435842486	Reward: 2498628.675923586	redundancy : 0.41304347826086957	avg_hop : 3.2985534422716314
+Episode: 9	Time: 13807	NB_Round: 13807	step_cnt: 13807	action_cnt: 7000	cache_hit: 6807	cache_hit_rate : 0.4930107916274354	Reward: 2304599.040346561	redundancy : 0.42857142857142855	avg_hop : 3.378793365684073
+Episode: 10	Time: 13474	NB_Round: 13474	step_cnt: 13474	action_cnt: 7000	cache_hit: 6474	cache_hit_rate : 0.4804809262282915	Reward: 2263580.567350937	redundancy : 0.29545454545454547	avg_hop : 3.3746474691999406

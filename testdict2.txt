@@ -1,0 +1,164 @@
+0번째 MicroBase Station Storage
+{'title': '시니어 토크쇼 황금연못', 'size': 20, 'popularity': 5.0, 'peak_day': 6, 'category': 'comedy'}
+{'title': 'Saturday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '태종 이방원', 'size': 20, 'popularity': 11.5, 'peak_day': 0, 'category': 'drama'}
+{'title': 'TV 동물농장', 'size': 20, 'popularity': 7.6, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'KBS 뉴스 9', 'size': 20, 'popularity': 8.1, 'peak_day': 0, 'category': 'news'}
+1번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Monday_news3', 'size': 20, 'popularity': 1.1, 'peak_day': 0, 'category': 'news'}
+{'title': '1박 2일 시즌4', 'size': 20, 'popularity': 8.4, 'peak_day': 0, 'category': 'comedy'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': '걸어서 세계속으로', 'size': 20, 'popularity': 3.9, 'peak_day': 4, 'category': 'news'}
+2번째 MicroBase Station Storage
+{'title': '순간포착 세상에 이런일이', 'size': 20, 'popularity': 5.7, 'peak_day': 2, 'category': 'comedy'}
+{'title': '걸어서 세계속으로', 'size': 20, 'popularity': 3.9, 'peak_day': 4, 'category': 'news'}
+{'title': '노래가 좋아', 'size': 20, 'popularity': 3.9, 'peak_day': 0, 'category': 'comedy'}
+{'title': '골 때리는 그녀들', 'size': 20, 'popularity': 7.0, 'peak_day': 3, 'category': 'comedy'}
+{'title': '살림하는 남자들 시즌2', 'size': 20, 'popularity': 5.6, 'peak_day': 6, 'category': 'comedy'}
+3번째 MicroBase Station Storage
+{'title': '자연의 철학자들', 'size': 20, 'popularity': 4.5, 'peak_day': 5, 'category': 'news'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+{'title': 'KBS 뉴스 9', 'size': 20, 'popularity': 8.1, 'peak_day': 0, 'category': 'news'}
+{'title': 'Monday_comedy1', 'size': 20, 'popularity': 1.3, 'peak_day': 0, 'category': 'comedy'}
+4번째 MicroBase Station Storage
+{'title': 'Friday_comedy1', 'size': 20, 'popularity': 1.3, 'peak_day': 0, 'category': 'comedy'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': '코로나19 통합뉴스룸', 'size': 20, 'popularity': 5.1, 'peak_day': 0, 'category': 'news'}
+{'title': '신발 벗고 돌싱포맨', 'size': 20, 'popularity': 6.4, 'peak_day': 2, 'category': 'comedy'}
+{'title': 'Saturday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+5번째 MicroBase Station Storage
+{'title': '골 때리는 그녀들', 'size': 20, 'popularity': 7.0, 'peak_day': 3, 'category': 'comedy'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': '이슈 Pick, 쌤과 함께', 'size': 20, 'popularity': 5.1, 'peak_day': 0, 'category': 'news'}
+{'title': 'TV 동물농장', 'size': 20, 'popularity': 7.6, 'peak_day': 0, 'category': 'comedy'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+6번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Saturday_drama1', 'size': 20, 'popularity': 1.9, 'peak_day': 0, 'category': 'drama'}
+{'title': '일꾼의 탄생', 'size': 20, 'popularity': 4.9, 'peak_day': 3, 'category': 'drama'}
+7번째 MicroBase Station Storage
+{'title': 'Saturday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': 'Saturday_drama3', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'drama'}
+{'title': 'Tuesday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': '나 혼자 산다', 'size': 20, 'popularity': 6.5, 'peak_day': 5, 'category': 'comedy'}
+8번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Wednesday_comedy2', 'size': 20, 'popularity': 1.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'Saturday_comedy3', 'size': 20, 'popularity': 1.4, 'peak_day': 0, 'category': 'comedy'}
+9번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Monday_drama2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'drama'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+10번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Sunday_comedy2', 'size': 20, 'popularity': 1.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': '현재는 아름다워', 'size': 20, 'popularity': 25, 'peak_day': 0, 'category': 'drama'}
+11번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Saturday_drama1', 'size': 20, 'popularity': 1.9, 'peak_day': 0, 'category': 'drama'}
+{'title': '옥탑방의 문제아들', 'size': 20, 'popularity': 3.5, 'peak_day': 3, 'category': 'comedy'}
+{'title': '미운 우리 새끼', 'size': 20, 'popularity': 11.8, 'peak_day': 0, 'category': 'comedy'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+12번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': '시니어 토크쇼 황금연못', 'size': 20, 'popularity': 5.0, 'peak_day': 6, 'category': 'comedy'}
+{'title': 'Thursday_drama3', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'drama'}
+{'title': '미운 우리 새끼', 'size': 20, 'popularity': 11.8, 'peak_day': 0, 'category': 'comedy'}
+{'title': '코로나19 통합뉴스룸', 'size': 20, 'popularity': 5.1, 'peak_day': 0, 'category': 'news'}
+13번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+14번째 MicroBase Station Storage
+{'title': '미운 우리 새끼', 'size': 20, 'popularity': 11.8, 'peak_day': 0, 'category': 'comedy'}
+{'title': '시니어 토크쇼 황금연못', 'size': 20, 'popularity': 5.0, 'peak_day': 6, 'category': 'comedy'}
+{'title': 'Thursday_drama3', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'drama'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+15번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Saturday_drama3', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'drama'}
+{'title': '불후의 명곡', 'size': 20, 'popularity': 5.7, 'peak_day': 6, 'category': 'drama'}
+{'title': '나 혼자 산다', 'size': 20, 'popularity': 6.5, 'peak_day': 5, 'category': 'comedy'}
+{'title': '걸어서 세계속으로', 'size': 20, 'popularity': 3.9, 'peak_day': 4, 'category': 'news'}
+16번째 MicroBase Station Storage
+{'title': 'Sunday_comedy2', 'size': 20, 'popularity': 1.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': '전국노래자랑', 'size': 20, 'popularity': 4.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Tuesday_comedy3', 'size': 20, 'popularity': 1.4, 'peak_day': 0, 'category': 'comedy'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+17번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Thursday_news3', 'size': 20, 'popularity': 1.1, 'peak_day': 0, 'category': 'news'}
+{'title': 'Saturday_news1', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'news'}
+{'title': 'Monday_news1', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'news'}
+18번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+19번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': '신발 벗고 돌싱포맨', 'size': 20, 'popularity': 6.4, 'peak_day': 2, 'category': 'comedy'}
+{'title': 'Wednesday_news1', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'news'}
+20번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': '전국노래자랑', 'size': 20, 'popularity': 4.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'Monday_drama1', 'size': 20, 'popularity': 1.9, 'peak_day': 0, 'category': 'drama'}
+{'title': '어게인 마이 라이프', 'size': 20, 'popularity': 10.1, 'peak_day': 5, 'category': 'drama'}
+21번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': '살림하는 남자들 시즌2', 'size': 20, 'popularity': 5.6, 'peak_day': 6, 'category': 'comedy'}
+{'title': 'Sunday_drama2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'drama'}
+{'title': 'Friday_drama1', 'size': 20, 'popularity': 1.9, 'peak_day': 0, 'category': 'drama'}
+22번째 MicroBase Station Storage
+{'title': '인간극장', 'size': 20, 'popularity': 9.5, 'peak_day': 2, 'category': 'news'}
+{'title': '순간포착 세상에 이런일이', 'size': 20, 'popularity': 5.7, 'peak_day': 2, 'category': 'comedy'}
+{'title': '코로나19 통합뉴스룸', 'size': 20, 'popularity': 5.1, 'peak_day': 0, 'category': 'news'}
+{'title': 'Sunday_comedy1', 'size': 20, 'popularity': 1.3, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'KBS 뉴스 9', 'size': 20, 'popularity': 8.1, 'peak_day': 0, 'category': 'news'}
+23번째 MicroBase Station Storage
+{'title': '1박 2일 시즌4', 'size': 20, 'popularity': 8.4, 'peak_day': 0, 'category': 'comedy'}
+{'title': '전국노래자랑', 'size': 20, 'popularity': 4.7, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'Friday_drama1', 'size': 20, 'popularity': 1.9, 'peak_day': 0, 'category': 'drama'}
+{'title': '시니어 토크쇼 황금연못', 'size': 20, 'popularity': 5.0, 'peak_day': 6, 'category': 'comedy'}
+{'title': 'Monday_news3', 'size': 20, 'popularity': 1.1, 'peak_day': 0, 'category': 'news'}
+24번째 MicroBase Station Storage
+{'title': 'a', 'size': 20, 'popularity': 25, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Tuesday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': 'Friday_drama3', 'size': 20, 'popularity': 1.2, 'peak_day': 0, 'category': 'drama'}
+{'title': '전지적 참견 시점', 'size': 20, 'popularity': 4.4, 'peak_day': 6, 'category': 'comedy'}
+0번째 Base Station Storage
+{'title': '현재는 아름다워', 'size': 20, 'popularity': 25, 'peak_day': 0, 'category': 'drama'}
+{'title': '놀면 뭐하니?', 'size': 20, 'popularity': 6.3, 'peak_day': 6, 'category': 'comedy'}
+{'title': '불후의 명곡', 'size': 20, 'popularity': 5.7, 'peak_day': 6, 'category': 'drama'}
+{'title': '골 때리는 그녀들', 'size': 20, 'popularity': 7.0, 'peak_day': 3, 'category': 'comedy'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+1번째 Base Station Storage
+{'title': 'TV 동물농장', 'size': 20, 'popularity': 7.6, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'Tuesday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '역사저널 그날', 'size': 20, 'popularity': 5.1, 'peak_day': 0, 'category': 'news'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+{'title': '놀면 뭐하니?', 'size': 20, 'popularity': 6.3, 'peak_day': 6, 'category': 'comedy'}
+2번째 Base Station Storage
+{'title': '옥탑방의 문제아들', 'size': 20, 'popularity': 3.5, 'peak_day': 3, 'category': 'comedy'}
+{'title': '1박 2일 시즌4', 'size': 20, 'popularity': 8.4, 'peak_day': 0, 'category': 'comedy'}
+{'title': '사장님 귀는 당나귀 귀', 'size': 20, 'popularity': 5.6, 'peak_day': 0, 'category': 'comedy'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+{'title': '비밀의 집', 'size': 20, 'popularity': 5.4, 'peak_day': 1, 'category': 'drama'}
+3번째 Base Station Storage
+{'title': '붉은 단심', 'size': 20, 'popularity': 6.3, 'peak_day': 1, 'category': 'drama'}
+{'title': 'Saturday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '미운 우리 새끼', 'size': 20, 'popularity': 11.8, 'peak_day': 0, 'category': 'comedy'}
+{'title': 'Friday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '으라차차 내 인생', 'size': 20, 'popularity': 17.1, 'peak_day': 1, 'category': 'drama'}
+Datacenter Storage
+{'title': '복면가왕', 'size': 20, 'popularity': 5.6, 'peak_day': 0, 'category': 'comedy'}
+{'title': '동물의 왕국', 'size': 20, 'popularity': 3.8, 'peak_day': 0, 'category': 'news'}
+{'title': '순간포착 세상에 이런일이', 'size': 20, 'popularity': 5.7, 'peak_day': 2, 'category': 'comedy'}
+{'title': '태종 이방원', 'size': 20, 'popularity': 11.5, 'peak_day': 0, 'category': 'drama'}
+{'title': 'Thursday_comedy3', 'size': 20, 'popularity': 1.4, 'peak_day': 0, 'category': 'comedy'}
+{'title': '인간극장', 'size': 20, 'popularity': 9.5, 'peak_day': 2, 'category': 'news'}
+{'title': '신발 벗고 돌싱포맨', 'size': 20, 'popularity': 6.4, 'peak_day': 2, 'category': 'comedy'}
+{'title': 'Sunday_news2', 'size': 20, 'popularity': 1.6, 'peak_day': 0, 'category': 'news'}
+{'title': '사랑의 꽈배기', 'size': 20, 'popularity': 15.3, 'peak_day': 1, 'category': 'drama'}
+{'title': 'TV 동물농장', 'size': 20, 'popularity': 7.6, 'peak_day': 0, 'category': 'comedy'}
