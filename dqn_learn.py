@@ -136,6 +136,7 @@ class DQNagent():
         self.b = 0.5
         self.c = 0.5
         self.d = 0.1
+        self.e = 10
 
         self.d_core = 0
         self.d_cache = 0
@@ -146,6 +147,7 @@ class DQNagent():
         self.stored_nodeID = 0
         self.alpha_redundancy = 0
         self.beta_redundancy = 0
+        self.vacancy = 0
 
         # Done 조건 action이 7000번 일어나면 끝
         self.NB_ACTION = 7000
@@ -318,7 +320,7 @@ class DQNagent():
                 self.hop_cnt += len(path) - 1
 
                 # 데이터 센터 && 코어 네트워크에서 cache hit 이 일어났을때
-                if len(path) >= 4:
+                if len(path) > 4:
                     # pick an action
                     action = self.choose_action(state)
                     #print("choose_action 끝")
@@ -583,7 +585,7 @@ class DQNagent():
         
         #reward = 0
         self.set_reward_parameter(path, requested_content=requested_content)
-        reward = self.a*(self.d_core - self.d_cache) + self.b*self.c_node - self.c*self.alpha_redundancy - self.d*self.beta_redundancy
+        reward = self.a*(self.d_core - self.d_cache) + self.b*self.c_node - self.c*self.alpha_redundancy - self.d*self.beta_redundancy - self.e*self.vacancy
         #          1         20                           0.5       300         0.5     300                   0.1       0
         """
         print("self.d_core : {}".format(self.d_core))
@@ -614,6 +616,7 @@ class DQNagent():
         self.d_cache = self.get_d_cache(nodeID, requested_content)
         self.c_node = self.get_c_node()
         self.alpha_redundancy, self.beta_redundancy = self.set_content_redundancy(requested_content)
+        self.vacancy = self.cal_vacancy()
 
 
     def get_d_core(self,nodeID, requested_content):
@@ -826,7 +829,28 @@ class DQNagent():
         return contentdict
 
 
+    def cal_vacancy(self):
 
+        vacancy = 0 
+        #print("=========================MicroBS=========================")
+        for i in range(cf.NUM_microBS[0]*cf.NUM_microBS[1]):
+            #print(self.network.microBSList[i].storage.__dict__)
+            #print("vacancy : {}".format(self.network.microBSList[i].storage.capacity - self.network.microBSList[i].storage.stored))
+
+            vacancy += self.network.microBSList[i].storage.capacity - self.network.microBSList[i].storage.stored
+
+        #print("=========================BS=========================")
+        for i in range(cf.NUM_BS[0]*cf.NUM_BS[1]):
+            #print(self.network.BSList[i].storage.__dict__)
+            #print("vacancy : {}".format(self.network.BSList[i].storage.capacity - self.network.BSList[i].storage.stored))
+            vacancy += self.network.BSList[i].storage.capacity - self.network.BSList[i].storage.stored
+
+        #print("=========================Datacenter=========================")
+        #print(self.network.dataCenter.storage.__dict__)
+        #print("vacancy : {}".format(self.network.dataCenter.storage.capacity - self.network.dataCenter.storage.stored))
+        vacancy += self.network.dataCenter.storage.capacity - self.network.dataCenter.storage.stored
+
+        return vacancy
         
          
     
