@@ -76,7 +76,7 @@ class savingfunctions():
         self.result_file.write('\n')
 
     def write_meta_file(self):
-        self.meta_file.write("===Network simulator Meta Data===")
+        self.meta_file.write("===Network simulator Meta Data===\n")
         self.meta_file.write('TOTAL_PRIOD = {}\n'.format(cf.TOTAL_PRIOD))
         self.meta_file.write('MAX_ROUNDS = {}\n'.format(cf.MAX_ROUNDS))
         self.meta_file.write('MAX_REQ_PER_ROUND = {}\n'.format(cf.MAX_REQ_PER_ROUND))
@@ -96,7 +96,7 @@ class savingfunctions():
         self.meta_file.write('LATENCY_INTERNET = {}\n'.format(cf.LATENCY_INTERNET))
         
         self.meta_file.write("\n")
-        self.meta_file.write("===DQN structure Meta Data===")
+        self.meta_file.write("===DQN structure Meta Data===\n")
         self.meta_file.write('H1 = {}\n'.format(cf.H1))
         self.meta_file.write('H2 = {}\n'.format(cf.H2))
         self.meta_file.write('H3 = {}\n'.format(cf.H3))
@@ -104,7 +104,7 @@ class savingfunctions():
         self.meta_file.write('q = {}\n'.format(cf.q))
         self.meta_file.write("\n")
 
-        self.meta_file.write("===DQN Agent Meta Data===")
+        self.meta_file.write("===DQN Agent Meta Data===\n")
         self.meta_file.write('GAMMA = {}\n'.format(cf.GAMMA))
         self.meta_file.write('BATCH_SIZE = {}\n'.format(cf.BATCH_SIZE))
         self.meta_file.write('BUFFER_SIZE = {}\n'.format(cf.BUFFER_SIZE))
@@ -116,7 +116,7 @@ class savingfunctions():
         self.meta_file.write('NB_ACTION = {}\n'.format(cf.NB_ACTION))
         self.meta_file.write("\n")
 
-        self.meta_file.write("===Reward parameter Meta Data===")
+        self.meta_file.write("===Reward parameter Meta Data===\n")
         self.meta_file.write('a = {}\n'.format(cf.a))
         self.meta_file.write('b = {}\n'.format(cf.b))
         self.meta_file.write('c = {}\n'.format(cf.c))
