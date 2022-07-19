@@ -1,0 +1,10 @@
+Episode: 1	Time: 17838	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 11669	cache_hit_rate : 0.6541652651642561	Reward: -8727800.669428568	redundancy : 0.9225806451612903	avg_hop : 2.4937773292970062
+Episode: 2	Time: 8318	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5357	cache_hit_rate : 0.6440250060110604	Reward: -1747580.17760849	redundancy : 0.5510204081632653	avg_hop : 3.170714113969704
+Episode: 3	Time: 8655	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5564	cache_hit_rate : 0.6428653957250144	Reward: -1479586.6604525778	redundancy : 0.6	avg_hop : 3.1247833622183707
+Episode: 4	Time: 8268	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5319	cache_hit_rate : 0.6433236574746009	Reward: -1530661.473294015	redundancy : 0.525	avg_hop : 3.190856313497823
+Episode: 5	Time: 8723	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5610	cache_hit_rate : 0.6431273644388399	Reward: -1451173.9054955451	redundancy : 0.5319148936170213	avg_hop : 3.1312621804425085
+Episode: 6	Time: 7928	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5103	cache_hit_rate : 0.6436680121089808	Reward: -1473878.2924982095	redundancy : 0.4594594594594595	avg_hop : 3.2318365287588295
+Episode: 7	Time: 8204	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5276	cache_hit_rate : 0.6431009263773769	Reward: -1324169.6704926735	redundancy : 0.575	avg_hop : 3.18259385665529
+Episode: 8	Time: 8128	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 4575	cache_hit_rate : 0.562869094488189	Reward: -1658124.110998459	redundancy : 0.5208333333333334	avg_hop : 3.2701771653543306
+Episode: 9	Time: 7543	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 4826	cache_hit_rate : 0.6397984886649875	Reward: -1316381.1185977743	redundancy : 0.4444444444444444	avg_hop : 3.266074506164656
+Episode: 10	Time: 7940	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5003	cache_hit_rate : 0.6301007556675063	Reward: -1617742.6106290645	redundancy : 0.5714285714285714	avg_hop : 3.224433249370277

@@ -31,15 +31,13 @@ class DQN(Model):
     def __init__(self, action_n, state_dim):
         super(DQN, self).__init__()
 
-        self.h1 = Dense(3 * state_dim, activation='relu')
-        self.d1 = Dropout(rate = 0.2)
-        self.h2 = Dense(9 * state_dim, activation='relu')
-        self.d2 = Dropout(rate = 0.2)
-        self.h3 = Dense(6 * state_dim, activation='relu')
-        self.d3 = Dropout(rate = 0.2)
-        #self.h4 = Dense(2 * state_dim, activation='relu')
-        #self.d4 = Dropout(rate = 0.2)
-        self.h5 = Dense(state_dim, activation='relu')
+        self.h1 = Dense(cf.H1 * state_dim, activation='relu')
+        self.d1 = Dropout(rate = cf.DROPOUT_RATE)
+        self.h2 = Dense(cf.H2 * state_dim, activation='relu')
+        self.d2 = Dropout(rate = cf.DROPOUT_RATE)
+        self.h3 = Dense(cf.H3 * state_dim, activation='relu')
+        self.d3 = Dropout(rate = cf.DROPOUT_RATE)
+        self.h4 = Dense(state_dim, activation='relu')
         self.q = Dense(action_n, activation='linear')
 
     def call(self, x):
@@ -49,9 +47,7 @@ class DQN(Model):
         x = self.d2(x)
         x = self.h3(x)
         x = self.d3(x)
-        #x = self.h4(x)
-        #x = self.d4(x)
-        x = self.h5(x)
+        x = self.h4(x)
         q = self.q(x)
         return q
 
@@ -92,19 +88,18 @@ class DQNagent():
         #print("init 안에서의 self.state")
         #print(self.state)
         self.state_dim = self.state.shape[0]
-
+        
     
         # DQN 하이퍼파라미터
-        self.GAMMA = 0.95
-        self.BATCH_SIZE = 4 #64
-        self.BUFFER_SIZE = 20000
-        self.DQN_LEARNING_RATE = 0.001
-        self.TAU = 0.001
-        self.EPSILON = 1.0
-        self.EPSILON_DECAY = 0.995
-        self.EPSILON_MIN = 0.01
-        self.train_start = 100          # 학습을 시작하기 전 데이터를 얻을 횟수
-
+        self.GAMMA = cf.GAMMA
+        self.BATCH_SIZE = cf.BATCH_SIZE
+        self.BUFFER_SIZE = cf.BUFFER_SIZE
+        self.DQN_LEARNING_RATE = cf.DQN_LEARNING_RATE
+        self.TAU = cf.TAU
+        self.EPSILON = cf.EPSILON
+        self.EPSILON_DECAY = cf.EPSILON_DECAY
+        self.EPSILON_MIN = cf.EPSILON_MIN
+        
         ## create Q networks
         self.dqn = DQN(self.action_n, self.state_dim)
         self.target_dqn = DQN(self.action_n, self.state_dim)
@@ -125,6 +120,7 @@ class DQNagent():
         self.save_epi_cache_hit_rate = []
         self.save_epi_redundancy = []
         self.save_epi_hop = []
+        self.save_epi_denominator = []
 
         # ADAM
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=self.DQN_LEARNING_RATE)
@@ -132,11 +128,11 @@ class DQNagent():
         self.memory = deque(maxlen = 10000)
 
         # reward parameter
-        self.a = 1
-        self.b = 0.5
-        self.c = 0.5
-        self.d = 0.1
-        self.e = 10
+        self.a = cf.a
+        self.b = cf.b
+        self.c = cf.c
+        self.d = cf.d
+        self.e = cf.e
 
         self.d_core = 0
         self.d_cache = 0
@@ -150,7 +146,7 @@ class DQNagent():
         self.vacancy = 0
 
         # Done 조건 action이 7000번 일어나면 끝
-        self.NB_ACTION = 7000
+        self.NB_ACTION = cf.NB_ACTION
         self.stop = self.NB_ACTION
         self.action_cnt = 0
         self.step_cnt = 0
@@ -320,7 +316,11 @@ class DQNagent():
                 self.hop_cnt += len(path) - 1
 
                 # 데이터 센터 && 코어 네트워크에서 cache hit 이 일어났을때
-                if len(path) > 4:
+                if len(path) >= 4:
+                    
+                    if len(path) == 4:
+                        self.cache_hit_cnt += 1
+
                     # pick an action
                     action = self.choose_action(state)
                     #print("choose_action 끝")
@@ -389,18 +389,16 @@ class DQNagent():
 
     ## save them to file if done
     def plot_result(self):
-        self.sf.plot_result(self.save_epi_reward)
-
-    ## save them to file if done
-    def plot_cache_hit_result(self):
+        self.sf.plot_reward_result(self.save_epi_reward)
         self.sf.plot_cache_hit_result(self.save_epi_cache_hit_rate)
-
-    def plot_redundancy_result(self):
         self.sf.plot_redundancy_result(self.save_epi_redundancy)
+        self.sf.plot_denominator_result(self.save_epi_denominator)
 
     def write_result_file(self, ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop):
         self.sf.write_result_file(ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop)
 
+    def write_meta_file(self):
+        self.sf.write_meta_file()
 
     def act(self, path, requested_content, action):
 
@@ -586,7 +584,7 @@ class DQNagent():
         #reward = 0
         self.set_reward_parameter(path, requested_content=requested_content)
         reward = self.a*(self.d_core - self.d_cache) + self.b*self.c_node - self.c*self.alpha_redundancy - self.d*self.beta_redundancy - self.e*self.vacancy
-        #          1         20                           0.5       300         0.5     300                   0.1       0
+        #          1         20                           0.5       300         0.5     300                   0.1       0                   10    
         """
         print("self.d_core : {}".format(self.d_core))
         print("self.d_cache : {}".format(self.d_cache))
@@ -811,6 +809,9 @@ class DQNagent():
         print("denominator - existing_content : {} ".format(denominator - existing_content))
         print("existing_content : {} ".format(existing_content))
         print("denominator : {} ".format(denominator))
+
+        self.save_epi_denominator.append(denominator)
+
         result = (denominator - existing_content) / denominator
 
         print("시그마( 해당 컨텐트 갯수 - 1 ) / 모든 네트워크 컨텐츠 갯수 : {}".format(result))

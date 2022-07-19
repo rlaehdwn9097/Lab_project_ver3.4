@@ -51,5 +51,39 @@ PACKET_SIZE = 12800 #(1500byte)
 
 LATENCY_INTERNET = 0.01#0.0422 #ms
 
+# Episode Number
+MAX_EPISODE_NUM = 500
+
+# DQN structure
+DROPOUT_RATE = 0.2
+H1 = 3
+H2 = 9
+H3 = 6
+H4 = 31
+q = 4
+
+# DQN 하이퍼파라미터
+GAMMA = 0.95
+BATCH_SIZE = 4 #64
+BUFFER_SIZE = 20000
+DQN_LEARNING_RATE = 0.001
+TAU = 0.001
+EPSILON = 1.0
+EPSILON_DECAY = 0.995
+EPSILON_MIN = 0.01
+
+
+#action 
+NB_ACTION = 7000
+
+# reward parameter
+a = 1
+b = 0.5
+c = 0.5
+d = 0.1
+e = 10
+
+
+
 
 

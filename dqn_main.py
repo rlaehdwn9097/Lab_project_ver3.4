@@ -2,15 +2,15 @@
 # coded by St.Watermelon
 
 from dqn_learn import DQNagent
-
+import config as cf
 
 def main():
-    max_episode_num = 500
+    max_episode_num = cf.MAX_EPISODE_NUM
     agent = DQNagent()
     agent.train(max_episode_num)
+    agent.write_meta_file()
     agent.plot_result()
-    agent.plot_cache_hit_result()
-    agent.plot_redundancy_result()
+    
 
 if __name__=="__main__":
     main()
