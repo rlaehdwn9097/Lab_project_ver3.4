@@ -1,0 +1,9 @@
+Episode: 1	Time: 13780	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7489	cache_hit_rate : 0.5434687953555878	Reward: -9725675.717435861	redundancy : 0.896774193548387	avg_hop : 2.7921625544267052
+Episode: 2	Time: 7438	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3426	cache_hit_rate : 0.46060769023931164	Reward: -1408765.8873161227	redundancy : 0.3111111111111111	avg_hop : 3.4688088195751545
+Episode: 3	Time: 7745	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3989	cache_hit_rate : 0.515041962556488	Reward: -1195100.1671222982	redundancy : 0.38095238095238093	avg_hop : 3.3732730794060686
+Episode: 4	Time: 7933	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 4043	cache_hit_rate : 0.5096432623219463	Reward: -1454799.759562934	redundancy : 0.4	avg_hop : 3.368586915416614
+Episode: 5	Time: 7926	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 4072	cache_hit_rate : 0.5137522079232905	Reward: -1607660.3719420289	redundancy : 0.4666666666666667	avg_hop : 3.347464042392127
+Episode: 6	Time: 7480	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3824	cache_hit_rate : 0.5112299465240642	Reward: -1080027.8507524987	redundancy : 0.36363636363636365	avg_hop : 3.4212566844919787
+Episode: 7	Time: 7792	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3913	cache_hit_rate : 0.5021817248459959	Reward: -1389261.5076453846	redundancy : 0.3541666666666667	avg_hop : 3.3753850102669403
+Episode: 8	Time: 7468	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3800	cache_hit_rate : 0.5088377075522228	Reward: -1503738.6574427725	redundancy : 0.37209302325581395	avg_hop : 3.4114890198178895
+Episode: 9	Time: 7713	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 3859	cache_hit_rate : 0.5003241280954233	Reward: -1368208.0187060516	redundancy : 0.4	avg_hop : 3.3947880202255933

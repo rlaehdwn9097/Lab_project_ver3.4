@@ -1,0 +1,10 @@
+Episode: 1	Time: 13715	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7349	cache_hit_rate : 0.535836675173168	Reward: -12814776.562321419	redundancy : 0.9290322580645162	avg_hop : 2.7975938753189937
+Episode: 2	Time: 13750	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7202	cache_hit_rate : 0.5237818181818182	Reward: -9676553.975779247	redundancy : 0.9225806451612903	avg_hop : 2.8121454545454547
+Episode: 3	Time: 14469	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7874	cache_hit_rate : 0.5441979404243555	Reward: -16775579.519136833	redundancy : 0.9161290322580645	avg_hop : 2.8172644965097797
+Episode: 4	Time: 13123	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6869	cache_hit_rate : 0.5234321420406919	Reward: -17693678.493371356	redundancy : 0.9096774193548387	avg_hop : 2.78892021641393
+Episode: 5	Time: 12489	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6347	cache_hit_rate : 0.508207222355673	Reward: -11602945.91279751	redundancy : 0.9354838709677419	avg_hop : 2.7541036111778365
+Episode: 6	Time: 14293	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7652	cache_hit_rate : 0.535366962848947	Reward: -14228090.223283777	redundancy : 0.9225806451612903	avg_hop : 2.801371300636675
+Episode: 7	Time: 13448	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7164	cache_hit_rate : 0.5327186198691255	Reward: -4637879.8564322395	redundancy : 0.9290322580645162	avg_hop : 2.6995092207019633
+Episode: 8	Time: 12219	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6409	cache_hit_rate : 0.524511007447418	Reward: -11336134.371309077	redundancy : 0.9225806451612903	avg_hop : 2.7363941402733447
+Episode: 9	Time: 13947	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7447	cache_hit_rate : 0.5339499533949953	Reward: -5803066.939982395	redundancy : 0.9290322580645162	avg_hop : 2.6831576683157667
+Episode: 10	Time: 12260	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6480	cache_hit_rate : 0.5285481239804242	Reward: -33903001.63788682	redundancy : 0.9354838709677419	avg_hop : 2.6938009787928223

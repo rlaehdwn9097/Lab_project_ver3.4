@@ -1,0 +1,1 @@
+Episode: 1	Time: 13036	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6776	cache_hit_rate : 0.519791347038969	Reward: -13628415.749391066	redundancy : 0.9354838709677419	avg_hop : 2.813362994783676

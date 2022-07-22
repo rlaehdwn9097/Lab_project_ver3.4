@@ -49,7 +49,7 @@ PACKET_SIZE = 12800 #(1500byte)
 #pacekt size mMTC 32bytes
 #throughput https://5g-tools.com/5g-nr-throughput-calculator/ 
 
-LATENCY_INTERNET = 0.01#0.0422 #ms
+LATENCY_INTERNET = 0.005#0.0422 #ms
 
 # Episode Number
 MAX_EPISODE_NUM = 500
@@ -72,16 +72,15 @@ EPSILON = 1.0
 EPSILON_DECAY = 0.995
 EPSILON_MIN = 0.01
 
-
 #action 
 NB_ACTION = 7000
 
 # reward parameter
-a = 1
-b = 0.5
+a = 1 # 1
+b = 0.5 #0.5
 c = 0.5
 d = 0.1
-e = 10
+e = 10 # 10
 
 
 

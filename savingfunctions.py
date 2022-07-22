@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import config as cf
-import dqn_learn as dl
 from time import strftime, localtime, time
 import os
 
@@ -19,6 +18,7 @@ class savingfunctions():
         os.mkdir(self.folderName)
         self.result_file = open(self.folderName +"/result.txt",'a')
         self.meta_file = open(self.folderName +"/metafile.txt",'a')
+        self.actionDictionary_file = open(self.folderName +"/actionDictionary.txt",'a', encoding="UTF-8")
 
     
     ## save them to file if done
@@ -42,6 +42,25 @@ class savingfunctions():
         plt.plot(denominator)
         plt.savefig(self.folderName + '/denominator.png')
         plt.show()
+
+    def plot_avg_hop_result(self, avg_hop):
+        plt.plot(avg_hop)
+        plt.savefig(self.folderName + '/avg_hop.png')
+        plt.show()
+
+    def write_actionDictionary_file(self, episode, actionDictionary):
+
+        actionDictionary = dict(sorted(actionDictionary.items(), key=lambda x:len(x[1]), reverse=True))
+        print(actionDictionary)
+        actionDictionary_keys = actionDictionary.keys()
+
+        self.actionDictionary_file.write("Episode : {}\n".format(episode))
+
+        for title in actionDictionary_keys:
+            self.actionDictionary_file.write("{} : ".format(title))
+            self.actionDictionary_file.write("{}".format(actionDictionary[title]))
+            self.actionDictionary_file.write("\n")
+
 
     def write_result_file(self, ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop):
         self.result_file.write('Episode: ')

@@ -1,4 +1,5 @@
-===Network simulator Meta Data===TOTAL_PRIOD = 100
+===Network simulator Meta Data===
+TOTAL_PRIOD = 100
 MAX_ROUNDS = 30000
 MAX_REQ_PER_ROUND = 1
 NB_NODES = 300
@@ -16,13 +17,15 @@ DLpackets_per_second = 108281.25
 ULpackets_per_second = 29687.5
 LATENCY_INTERNET = 0.01
 
-===DQN structure Meta Data===H1 = 3
+===DQN structure Meta Data===
+H1 = 3
 H2 = 9
 H3 = 6
 H4 = 31
 q = 4
 
-===DQN Agent Meta Data===GAMMA = 0.95
+===DQN Agent Meta Data===
+GAMMA = 0.95
 BATCH_SIZE = 4
 BUFFER_SIZE = 20000
 DQN_LEARNING_RATE = 0.001
@@ -32,7 +35,8 @@ EPSILON_DECAY = 0.995
 EPSILON_MIN = 0.01
 NB_ACTION = 7000
 
-===Reward parameter Meta Data===a = 1
+===Reward parameter Meta Data===
+a = 1
 b = 0.5
 c = 0.5
 d = 0.1

@@ -1,0 +1,10 @@
+Episode: 1	Time: 13976	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7730	cache_hit_rate : 0.5530910131654264	Reward: 7435.868511314328	redundancy : 0.9096774193548387	avg_hop : 2.7669576416714365
+Episode: 2	Time: 11486	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6003	cache_hit_rate : 0.5226362528295316	Reward: 5849.33361791849	redundancy : 0.7741935483870968	avg_hop : 3.0622496952812117
+Episode: 3	Time: 11527	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 6151	cache_hit_rate : 0.5336167259477748	Reward: 5806.113996321832	redundancy : 0.7792207792207793	avg_hop : 2.9498568578120934
+Episode: 4	Time: 8327	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 4183	cache_hit_rate : 0.502341779752612	Reward: 4070.698772510883	redundancy : 0.7142857142857143	avg_hop : 3.305392097994476
+Episode: 5	Time: 10900	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 5699	cache_hit_rate : 0.5228440366972477	Reward: 5548.003588087772	redundancy : 0.7077922077922078	avg_hop : 3.0592660550458715
+Episode: 6	Time: 13865	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7468	cache_hit_rate : 0.5386224305805987	Reward: 7309.437667232115	redundancy : 0.9096774193548387	avg_hop : 2.8233681932924632
+Episode: 7	Time: 13281	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7066	cache_hit_rate : 0.5320382501317672	Reward: 6910.692199696704	redundancy : 0.8903225806451613	avg_hop : 2.833973345380619
+Episode: 8	Time: 13197	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7041	cache_hit_rate : 0.5335303478063196	Reward: 6842.706660941209	redundancy : 0.9096774193548387	avg_hop : 2.8907327422899143
+Episode: 9	Time: 13272	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7041	cache_hit_rate : 0.5305153707052441	Reward: 6934.437543389666	redundancy : 0.8838709677419355	avg_hop : 2.7820976491862566
+Episode: 10	Time: 13253	NB_Round: 7000	step_cnt: 7000	action_cnt: 7000	cache_hit: 7009	cache_hit_rate : 0.5288613898739908	Reward: 7113.017426401572	redundancy : 0.9096774193548387	avg_hop : 2.841092582811439

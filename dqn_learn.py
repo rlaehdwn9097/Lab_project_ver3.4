@@ -5,9 +5,7 @@ from queue import Empty
 from turtle import shape
 from typing import List
 
-from time import strftime, localtime, time
-import os
-
+import math
 
 import network as nt
 import config as cf
@@ -119,7 +117,7 @@ class DQNagent():
         self.save_epi_reward = []
         self.save_epi_cache_hit_rate = []
         self.save_epi_redundancy = []
-        self.save_epi_hop = []
+        self.save_epi_avg_hop = []
         self.save_epi_denominator = []
 
         # ADAM
@@ -160,6 +158,10 @@ class DQNagent():
         
         # request dictionary
         self.requestDictionary = self.set_requestDictionary()
+        self.actionDictionary = self.set_actionDictionary()
+
+        #tmp 변수
+        self.tmpTime = 0
 
         
 
@@ -169,6 +171,7 @@ class DQNagent():
         # state 함수 안에 round_day를 가져오는
         self.state = self.set_state()
         self.requestDictionary = self.set_requestDictionary()
+        self.actionDictionary = self.set_actionDictionary()
 
         return self.state
 
@@ -281,11 +284,7 @@ class DQNagent():
 
         next_state = self.set_state()
 
-        if action == 3:
-            reward = 0
-
-        else: 
-            reward = self.get_reward(path, requested_content)
+        reward = self.get_reward(action, path, requested_content)
 
         return next_state, reward, done
 
@@ -300,12 +299,19 @@ class DQNagent():
             # reset episode
             time, episode_reward, done = 0, 0, False
             self.round_nb, self.cache_hit_cnt, self.action_cnt, self.step_cnt, self.hop_cnt = 0,0,0,0,0
+
+            # @ tmp 변수
+            self.tmpTime = 0
+
             # reset the environment and observe the first state
             #print("reset?")
             state = self.reset()
 
             #print("reset 직후 state : {}".format(state))
             while not done:
+                # @ tmp 변수
+                self.tmpTime += 1
+
                 # @ round_day 를 state 로 빼야함 
                 # @ reset 할 때 고려
                 round_day =  self.network.days[self.round_nb] % 7
@@ -323,6 +329,10 @@ class DQNagent():
 
                     # pick an action
                     action = self.choose_action(state)
+
+                    # @ actionDictionary 에 action append 하기
+                    self.append_actionDictionary(title, action)
+
                     #print("choose_action 끝")
                     # observe reward, new_state
                     #print("state : {}".format(state))
@@ -372,14 +382,18 @@ class DQNagent():
             redundancy = self.function1()
             avg_hop = self.hop_cnt/time
 
+            #print(self.actionDictionary)
+            self.write_actionDictionary_file(ep+1, self.actionDictionary)
+
             print('Episode: ', ep+1, '\tTime: ', time, '\tNB_Round: ', self.last_round_nb, '\tstep_cnt: ', self.step_cnt,
-            '\taction_cnt: ',self.action_cnt,'\tcache_hit: ', self.cache_hit_cnt, '\tcache_hit_rate: ', cache_hit_rate, '\t','Reward: ', episode_reward, '\t','Redundancy: ', redundancy, '\t','avg_hop: ', avg_hop, '\n')
+            '\taction_cnt: ',self.action_cnt,'\t','cache_hit: ', self.cache_hit_cnt, '\tcache_hit_rate: ', cache_hit_rate, '\t','Reward: ', episode_reward, '\t','Redundancy: ', redundancy, '\t','avg_hop: ', avg_hop, '\n')
             self.write_result_file( ep, time, self.last_round_nb, self.step_cnt, self.action_cnt, self.cache_hit_cnt, cache_hit_rate, episode_reward, redundancy, avg_hop)
             
+
             self.save_epi_reward.append(episode_reward)
             self.save_epi_cache_hit_rate.append(cache_hit_rate)
             self.save_epi_redundancy.append(redundancy)
-            self.save_epi_hop.append(avg_hop)
+            self.save_epi_avg_hop.append(avg_hop)
             ## save weights every episode
             self.dqn.save_weights("./save_weights/cacheSIM_dqn.h5")
 
@@ -393,12 +407,17 @@ class DQNagent():
         self.sf.plot_cache_hit_result(self.save_epi_cache_hit_rate)
         self.sf.plot_redundancy_result(self.save_epi_redundancy)
         self.sf.plot_denominator_result(self.save_epi_denominator)
+        self.sf.plot_avg_hop_result(self.save_epi_avg_hop)
+        
 
     def write_result_file(self, ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop):
         self.sf.write_result_file(ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop)
 
     def write_meta_file(self):
         self.sf.write_meta_file()
+    
+    def write_actionDictionary_file(self, episode, actionDictionary):
+        self.sf.write_actionDictionary_file(episode, actionDictionary)
 
     def act(self, path, requested_content, action):
 
@@ -567,7 +586,7 @@ class DQNagent():
         #print("action : " + str(action))
 
 
-    def get_reward(self, path, requested_content):
+    def get_reward(self, action, path, requested_content):
         """
         Return the reward.
         The reward is:
@@ -580,11 +599,18 @@ class DQNagent():
             cf.NB_NODES : 노드의 갯수
             c_node : agent 저장할 때 contents가 있는 station이 포괄하는 device의 갯수
         """
-        
+
         #reward = 0
         self.set_reward_parameter(path, requested_content=requested_content)
-        reward = self.a*(self.d_core - self.d_cache) + self.b*self.c_node - self.c*self.alpha_redundancy - self.d*self.beta_redundancy - self.e*self.vacancy
-        #          1         20                           0.5       300         0.5     300                   0.1       0                   10    
+        if action ==3:
+            reward = -1 * self.e * self.vacancy
+        else:
+            reward = self.a*(self.d_core - self.d_cache) + self.b*math.log2(self.c_node) - self.c*self.alpha_redundancy - self.d*self.beta_redundancy - self.e*self.vacancy
+        #          1         20                              0.5               300         0.5        300                   0.1       0                   10    
+
+
+        #reward = self.cache_hit_cnt / self.tmpTime
+        
         """
         print("self.d_core : {}".format(self.d_core))
         print("self.d_cache : {}".format(self.d_cache))
@@ -829,6 +855,18 @@ class DQNagent():
 
         return contentdict
 
+    def set_actionDictionary(self):
+        title_list = sc.emBBScenario.titleList
+        #print(title_list)
+        actiondict = {}
+
+        for i in range(len(title_list)):
+            actiondict[title_list[i]] = []
+
+        return actiondict
+
+    def append_actionDictionary(self, title, action):
+        self.actionDictionary[title].append(action)
 
     def cal_vacancy(self):
 
@@ -837,7 +875,6 @@ class DQNagent():
         for i in range(cf.NUM_microBS[0]*cf.NUM_microBS[1]):
             #print(self.network.microBSList[i].storage.__dict__)
             #print("vacancy : {}".format(self.network.microBSList[i].storage.capacity - self.network.microBSList[i].storage.stored))
-
             vacancy += self.network.microBSList[i].storage.capacity - self.network.microBSList[i].storage.stored
 
         #print("=========================BS=========================")
