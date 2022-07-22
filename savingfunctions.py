@@ -38,6 +38,11 @@ class savingfunctions():
         plt.savefig(self.folderName + '/redundancy.png')
         plt.show()
 
+    def plot_existing_content_result(self, existing_content):
+        plt.plot(existing_content)
+        plt.savefig(self.folderName + '/existing_content.png')
+        plt.show()
+
     def plot_denominator_result(self, denominator):
         plt.plot(denominator)
         plt.savefig(self.folderName + '/denominator.png')
@@ -48,18 +53,24 @@ class savingfunctions():
         plt.savefig(self.folderName + '/avg_hop.png')
         plt.show()
 
-    def write_actionDictionary_file(self, episode, actionDictionary):
-
+    def write_actionDictionary_file(self, episode, requestDictionary, actionDictionary):
+        """
         actionDictionary = dict(sorted(actionDictionary.items(), key=lambda x:len(x[1]), reverse=True))
-        print(actionDictionary)
         actionDictionary_keys = actionDictionary.keys()
-
         self.actionDictionary_file.write("Episode : {}\n".format(episode))
-
         for title in actionDictionary_keys:
             self.actionDictionary_file.write("{} : ".format(title))
             self.actionDictionary_file.write("{}".format(actionDictionary[title]))
             self.actionDictionary_file.write("\n")
+        """
+        requestDictionary = dict(sorted(requestDictionary.items(), key=lambda x:x[1], reverse=True))
+        requestDictionaryKeys = requestDictionary.keys()
+
+        self.actionDictionary_file.write("Episode : {}\n".format(episode))
+        for title in requestDictionaryKeys:
+            self.actionDictionary_file.write("{} : ".format(title))
+            self.actionDictionary_file.write("{}".format(actionDictionary[title]))
+            self.actionDictionary_file.write("\n") 
 
 
     def write_result_file(self, ep, time, NB_Round, step_cnt, action_cnt, cache_hit, cache_hit_rate, episode_reward, redundancy, avg_hop):

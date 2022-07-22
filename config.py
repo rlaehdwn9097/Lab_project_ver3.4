@@ -6,7 +6,7 @@ from platform import node
 # 요청이 많은 시간대 고려 안함
 # 라운드 사이의 간격은 랜덤함
 # 따라서 라운드를 통해서 요일을 계산하고 해당 요일에 요청이 많은 컨테츠를 학습하여 BS 미리 해당 컨텐츠를 캐싱하는 것을 목표
-TOTAL_PRIOD = 100 #(week)
+TOTAL_PRIOD = 1000 #(week)
 MAX_ROUNDS = 30000   #70000 2만이나 3만으로 늘리고 기간을 한달이라고 하면 총 24 * 30일 
 MAX_REQ_PER_ROUND = 1
 
@@ -52,19 +52,21 @@ PACKET_SIZE = 12800 #(1500byte)
 LATENCY_INTERNET = 0.005#0.0422 #ms
 
 # Episode Number
-MAX_EPISODE_NUM = 500
+MAX_EPISODE_NUM = 1000
 
 # DQN structure
 DROPOUT_RATE = 0.2
-H1 = 3
-H2 = 9
-H3 = 6
-H4 = 31
+H1 = 1
+H2 = 3
+H3 = 9
+H4 = 6
+H5 = 4
+H6 = 1
 q = 4
 
 # DQN 하이퍼파라미터
-GAMMA = 0.95
-BATCH_SIZE = 4 #64
+GAMMA = 0.8 #0.95
+BATCH_SIZE = 32 #64
 BUFFER_SIZE = 20000
 DQN_LEARNING_RATE = 0.001
 TAU = 0.001
@@ -73,7 +75,7 @@ EPSILON_DECAY = 0.995
 EPSILON_MIN = 0.01
 
 #action 
-NB_ACTION = 7000
+NB_ACTION = 700
 
 # reward parameter
 a = 1 # 1

@@ -35,7 +35,12 @@ class DQN(Model):
         self.d2 = Dropout(rate = cf.DROPOUT_RATE)
         self.h3 = Dense(cf.H3 * state_dim, activation='relu')
         self.d3 = Dropout(rate = cf.DROPOUT_RATE)
-        self.h4 = Dense(state_dim, activation='relu')
+        self.h4 = Dense(cf.H4 * state_dim, activation='relu')
+        self.d4 = Dropout(rate = cf.DROPOUT_RATE)
+        self.h5 = Dense(cf.H5 * state_dim, activation='relu')
+        self.d5 = Dropout(rate = cf.DROPOUT_RATE)
+        self.h6 = Dense(cf.H6 * state_dim, activation='relu')
+        self.d6 = Dropout(rate = cf.DROPOUT_RATE)
         self.q = Dense(action_n, activation='linear')
 
     def call(self, x):
@@ -46,6 +51,11 @@ class DQN(Model):
         x = self.h3(x)
         x = self.d3(x)
         x = self.h4(x)
+        x = self.d4(x)
+        x = self.h5(x)
+        x = self.d5(x)
+        x = self.h6(x)
+        x = self.d6(x)
         q = self.q(x)
         return q
 
@@ -118,6 +128,7 @@ class DQNagent():
         self.save_epi_cache_hit_rate = []
         self.save_epi_redundancy = []
         self.save_epi_avg_hop = []
+        self.save_epi_existing_content = []
         self.save_epi_denominator = []
 
         # ADAM
@@ -162,6 +173,11 @@ class DQNagent():
 
         #tmp 변수
         self.tmpTime = 0
+
+        # cache 교체 Flag [0,1]
+        # 0 : 교체 안됌
+        # 1 : 교체 됌
+        self.cache_changed = 0
 
         
 
@@ -383,7 +399,7 @@ class DQNagent():
             avg_hop = self.hop_cnt/time
 
             #print(self.actionDictionary)
-            self.write_actionDictionary_file(ep+1, self.actionDictionary)
+            self.write_actionDictionary_file(ep+1, self.requestDictionary, self.actionDictionary)
 
             print('Episode: ', ep+1, '\tTime: ', time, '\tNB_Round: ', self.last_round_nb, '\tstep_cnt: ', self.step_cnt,
             '\taction_cnt: ',self.action_cnt,'\t','cache_hit: ', self.cache_hit_cnt, '\tcache_hit_rate: ', cache_hit_rate, '\t','Reward: ', episode_reward, '\t','Redundancy: ', redundancy, '\t','avg_hop: ', avg_hop, '\n')
@@ -406,6 +422,7 @@ class DQNagent():
         self.sf.plot_reward_result(self.save_epi_reward)
         self.sf.plot_cache_hit_result(self.save_epi_cache_hit_rate)
         self.sf.plot_redundancy_result(self.save_epi_redundancy)
+        self.sf.plot_existing_content_result(self.save_epi_existing_content)
         self.sf.plot_denominator_result(self.save_epi_denominator)
         self.sf.plot_avg_hop_result(self.save_epi_avg_hop)
         
@@ -416,8 +433,8 @@ class DQNagent():
     def write_meta_file(self):
         self.sf.write_meta_file()
     
-    def write_actionDictionary_file(self, episode, actionDictionary):
-        self.sf.write_actionDictionary_file(episode, actionDictionary)
+    def write_actionDictionary_file(self, episode, requestDictionary, actionDictionary):
+        self.sf.write_actionDictionary_file(episode, requestDictionary, actionDictionary)
 
     def act(self, path, requested_content, action):
 
@@ -453,6 +470,8 @@ class DQNagent():
 
                 if self.network.microBSList[path[1]].storage.abletostore(requested_content):
                     self.network.microBSList[path[1]].storage.addContent(requested_content)
+                    # cache_changed
+                    self.cache_changed = 1
 
                 else:
                     #! content.py -> delFirstStored 사용하자.
@@ -473,6 +492,9 @@ class DQNagent():
                         del_content = self.network.microBSList[path[1]].storage.storage[min_index]
                         self.network.microBSList[path[1]].storage.delContent(del_content)
                         self.network.microBSList[path[1]].storage.addContent(requested_content)
+                        # cache_changed
+                        self.cache_changed = 1
+
                         # print()
                         # print("MICROBS")
                         # print("requested_cnt_list : {}".format(requested_cnt_list))
@@ -489,8 +511,7 @@ class DQNagent():
                         
                         # print("바뀐 뒤 requested_cnt_list : {}".format(requested_cnt_list))
                         # #print("바뀐 뒤 content_title_list : {}".format(tmp_content_title_list))
-
-
+                    
 
 
 
@@ -504,9 +525,11 @@ class DQNagent():
             if self.network.BSList[path[2]].storage.isstored(requested_content) != 1:
                 if self.network.BSList[path[2]].storage.abletostore(requested_content):
                     self.network.BSList[path[2]].storage.addContent(requested_content)
+                    # cache_changed
+                    self.cache_changed = 1
+
                 else:
                     #del_content = self.network.BSList[path[2]].storage.storage[0]
-
 
                     for i in range(len(self.network.BSList[path[2]].storage.storage)):
                         content_title = self.network.BSList[path[2]].storage.storage[i].get_title()
@@ -519,6 +542,8 @@ class DQNagent():
                         del_content = self.network.BSList[path[2]].storage.storage[min_index]
                         self.network.BSList[path[2]].storage.delContent(del_content)
                         self.network.BSList[path[2]].storage.addContent(requested_content)
+                        # cache_changed
+                        self.cache_changed = 1
                         # print()
                         # print("BS")
                         # print("requested_cnt_list : {}".format(requested_cnt_list))
@@ -546,6 +571,8 @@ class DQNagent():
             if self.network.dataCenter.storage.isstored(requested_content) != 1:
                 if self.network.dataCenter.storage.abletostore(requested_content):
                     self.network.dataCenter.storage.addContent(requested_content)
+                    # cache_changed
+                    self.cache_changed = 1
                 else:
 
                     for i in range(len(self.network.dataCenter.storage.storage)):
@@ -559,6 +586,9 @@ class DQNagent():
                         del_content = self.network.dataCenter.storage.storage[min_index]
                         self.network.dataCenter.storage.delContent(del_content)
                         self.network.dataCenter.storage.addContent(requested_content)
+                        # cache_changed
+                        self.cache_changed = 1
+
                         # print()
                         # print("Datacenter")
                         # print("requested_cnt_list : {}".format(requested_cnt_list))
@@ -575,6 +605,7 @@ class DQNagent():
                         # print("바뀐 뒤 requested_cnt_list : {}".format(requested_cnt_list))
                         # #print("바뀐 뒤 content title list : {}".format(tmp_content_title_list))
                         
+
 
 
 
@@ -602,7 +633,8 @@ class DQNagent():
 
         #reward = 0
         self.set_reward_parameter(path, requested_content=requested_content)
-        if action ==3:
+
+        if action == 3 or self.cache_changed == 0:
             reward = -1 * self.e * self.vacancy
         else:
             reward = self.a*(self.d_core - self.d_cache) + self.b*math.log2(self.c_node) - self.c*self.alpha_redundancy - self.d*self.beta_redundancy - self.e*self.vacancy
@@ -618,7 +650,8 @@ class DQNagent():
         print("self.alpha : {}".format(self.alpha_redundancy))
         print("self.beta : {}".format(self.beta_redundancy))
         """
-        
+        # cache_changed 초기화
+        self.cache_changed = 0
         reward = float(reward)
         #print(reward)
         return reward
@@ -837,6 +870,7 @@ class DQNagent():
         print("denominator : {} ".format(denominator))
 
         self.save_epi_denominator.append(denominator)
+        self.save_epi_existing_content.append(existing_content)
 
         result = (denominator - existing_content) / denominator
 
